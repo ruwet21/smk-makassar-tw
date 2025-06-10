@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SMK Makassar</title>
+    <!-- -----LINK TAILWIND----- -->
+    <link rel="stylesheet" href="src/output.css" />
+    <!-- --FLOWBIT CDN-- -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css"
+      rel="stylesheet"
+    />
+    <!-- ------FONT AWSOME CDN--- -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!--====STYLE=== -->
+    <style>
+      .box-custom {
+        position: absolute;
+        top: 33.333333%;
+        right: 13rem; /* Tailwind right-52 = 208px */
+        margin-left: auto;
+        margin-right: auto;
+        display: none;
+        max-width: 16rem; /* Tailwind max-w-2xs */
+        align-items: center;
+        gap: 0.5rem; /* Tailwind space-x-2 → 8px antar item */
+        border-radius: 0.75rem; /* Tailwind rounded-xl */
+        background-color: white;
+        padding: 0.75rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1),
+                    0 1px 2px rgba(0, 0, 0, 0.06);
+      }
+    
+      .quote-box {
+    display: none;
+    position: absolute;
+    left: 50%;                /* left-1/2 */
+    bottom: 20%;              /* bottom-1/5 */
+    height: 5.5rem;           /* h-22 → 22 × 0.25rem = 5.5rem = 88px */
+    width: 12rem;             /* w-48 → 48 × 0.25rem = 12rem = 192px */
+    border-radius: 0.375rem;  /* rounded-md */
+    background-color: white;
+    padding: 0.75rem;         /* p-3 */
+    font-size: 0.75rem;       /* text-xs = 12px */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1),
+                0 1px 2px rgba(0, 0, 0, 0.06); /* shadow-md */
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-style: italic;
+  }
+
+  @media (min-width: 640px) {
+    .quote-box {
+      display: flex !important;
+    }
+  }
+  @media (min-width: 768px) {
+    .quote-box {
+      transform: translateX(195px) translateY(-190px);
+    }
+  }
+  @media (min-width: 1230px) {
+    .quote-box {
+      transform: translateX(-85px) translateY(-20px);
+    }
+  }
+      @media (min-width: 640px) {
+        .box-custom {
+          display: flex !important; /* sm:!flex */
+        }
+      }
+    
+      @media (min-width: 800px) {
+        .box-custom {
+          transform: translateX(195px) translateY(-95px);
+        }
+      }
+      
+      @media (min-width: 1200px) {
+        .box-custom {
+          transform: translateX(195px) translateY(55px);
+        }
+      }
+      @media (min-width: 1400px) {
+        .box-custom {
+          transform: translateX(-35px) translateY(-35px);
+        }
+      }
+      
+    </style>
+  </head>
+  <body>
+    <!-- ----NAVBAR---- -->
+    <nav
+      class="border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900 font-secondary  left-0 top-0 right-0 sticky z-50"
+     >
+      <div
+        class="mx-auto flex max-w-6xl flex-wrap items-center justify-between p-4 "
+       >
+        <p class="text-3xl font-bold font-secondary">
+          <span class="text-3xl font-bold text-[#362FD9]">SM</span>KNS
+        </p>
+        <button data-collapse-toggle="navbar-dropdown" type="button" class="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:ring-2 focus:ring-gray-200 focus:outline-none md:hidden dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-dropdown" aria-expanded="false">
+          <span class="sr-only">Open main menu</span>
+          <svg class="h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
+          </svg>
+        </button>
+        <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
+          <ul class="mt-4 flex flex-col rounded-lg border border-gray-100 bg-gray-50 p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-white md:p-0 rtl:space-x-reverse dark:border-gray-700 dark:bg-gray-800 md:dark:bg-gray-900">
+            <li>
+              <a href="#" class="block rounded-sm bg-blue-700 px-3 py-2 text-white md:bg-transparent md:p-0 md:text-blue-700 dark:bg-blue-600 md:dark:bg-transparent md:dark:text-blue-500" aria-current="page">Home</a>
+            </li>
+            <li>
+              <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex w-full items-center justify-between rounded-sm px-3 py-2 text-gray-900 hover:bg-gray-100 md:w-auto md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:focus:text-white md:dark:hover:bg-transparent md:dark:hover:text-blue-500">
+                Tentang Kami
+                <svg class="ms-2.5 h-2.5 w-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                </svg>
+              </button>
+              <!-- Dropdown menu -->
+              <div id="dropdownNavbar" class="z-10 hidden w-44 divide-y divide-gray-100 rounded-lg bg-white font-normal shadow-sm dark:divide-gray-600 dark:bg-gray-700">
+                <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+                  <li>
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                  </li>
+                  <li>
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+                  </li>
+                  <li>
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+                  </li>
+                </ul>
+                
+              </div>
+            </li>
+            <li>
+              <a href="#" class="block rounded-sm px-3 py-2 text-gray-900 hover:bg-gray-100 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-blue-500">Program</a>
+            </li>
+            <li>
+              <a href="#" class="block rounded-sm px-3 py-2 text-gray-900 hover:bg-gray-100 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-blue-500">Guru</a>
+            </li>
+            <li>
+              <a href="#" class="block rounded-sm px-3 py-2 text-gray-900 hover:bg-gray-100 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-blue-500">Siswa</a>
+            </li>
+            <li>
+              <a href="#" class="block rounded-sm px-3 py-2 text-gray-900 hover:bg-gray-100 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-blue-500">Berita</a>
+            </li>
+            <li>
+              <a href="#" class="block rounded-sm px-3 py-2 text-gray-900 hover:bg-gray-100 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-blue-500">Fitur</a>
+            </li>
+          </ul>
+        </div>
+        <a
+          href="#"
+          class="me-2 mb-2 hidden rounded-full bg-blue-700 px-5 py-2.5 text-center text-sm font-semibold text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 focus:outline-none md:flex dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >Contact</a
+        >
+      </div>
+    </nav>
+    <!-- ----NAVBAR---- -->
+
+    <!-- ----HERO--- ---->
+    <section
+      id="home"
+      class="mx-auto flex max-w-5xl flex-col items-center gap-12 px-4 py-28 md:flex-row"
+    >
+      <!-- LEFT CONTENT -->
+      <div class="space-y-6 md:w-1/2">
+        <div>
+          <h1
+            class="text-5xl leading-tight font-black text-[#2C2C2C] sm:text-6xl lg:text-7xl"
+          >
+            SMK <span class="text-[#362FD9]">Negeri</span> <br />Makassar
+          </h1>
+          <h3
+            class="mt-4 font-primary text-base leading-relaxed font-medium text-[#747474] sm:text-lg lg:text-xl"
+          >
+            Sekolah adalah tempat mencetak penerus bangsa yang berkualitas dan
+            berprestasi di segala bidang yang dapat bersaing di dunia
+            internasional
+          </h3>
+        </div>
+
+        <!-- BUTTONS -->
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-center">
+          <a href="#" class="inline-flex items-center justify-center gap-2 rounded-full bg-blue-700 px-6 py-3 text-sm font-semibold text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 drop-shadow-xl">
+            Get Started
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 6L15 12L9 18" stroke="#F2F2F2" stroke-width="2" />
+            </svg>
+          </a>
+          <a href="#"
+  class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#362FD9] border border-[#362FD9]hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+  Video
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-[#362FD9]" viewBox="0 0 13 16" fill="currentColor">
+    <path d="M12.5 7.13397C13.1667 7.51888 13.1667 8.48112 12.5 8.86602L2 14.9282C1.33333 15.3131 0.499999 14.832 0.499999 14.0622L0.5 1.93782C0.5 1.16802 1.33333 0.686896 2 1.0718L12.5 7.13397Z" />
+  </svg>
+</a>
+
+
+        </div>
+        <!-- -------SOCIAL MEDIA------ -->
+        <div class="flex items-center gap-4">
+          <p>We are in Socials Media :</p>
+          <div class="flex items-center justify-center gap-x-2">
+            <!-- Facebook -->
+            <div class="transform transition-transform duration-200 hover:scale-110">
+              <a href="https://www.facebook.com/?locale=id_ID"
+                ><svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3.07652 0.74292C1.37226 0.74292 0 2.11518 0 3.81944V14.5154C0 16.2197 1.37226 17.5919 3.07652 17.5919H8.87363V11.005H7.13187V8.63352H8.87363V6.60743C8.87363 5.01562 9.90275 3.55407 12.2734 3.55407C13.2333 3.55407 13.9431 3.64622 13.9431 3.64622L13.8872 5.86081C13.8872 5.86081 13.1634 5.85397 12.3735 5.85397C11.5186 5.85397 11.3815 6.24787 11.3815 6.90178V8.63353H13.9552L13.843 11.005H11.3815V17.5919H13.7725C15.4767 17.5919 16.849 16.2197 16.849 14.5154V3.81946C16.849 2.1152 15.4767 0.742937 13.7725 0.742937H3.07651L3.07652 0.74292Z" fill="#151515" /></svg
+              ></a>
+            </div>
+            <!-- ---TWITTER -->
+            <div class="transform transition-transform duration-200 hover:scale-110">
+              <a href="#"
+                ><svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g clip-path="url(#clip0_1_158)">
+                    <path d="M16.4291 1.40015H2.57488C1.53188 1.40015 0.685669 2.22285 0.685669 3.23688V16.7063C0.685669 17.7203 1.53188 18.543 2.57488 18.543H16.4291C17.4721 18.543 18.3183 17.7203 18.3183 16.7063V3.23688C18.3183 2.22285 17.4721 1.40015 16.4291 1.40015ZM14.5045 7.47668C14.5123 7.58382 14.5123 7.69479 14.5123 7.80193C14.5123 11.1195 11.9147 14.9422 7.16803 14.9422C5.70389 14.9422 4.34602 14.529 3.20462 13.8172C3.41322 13.8402 3.61395 13.8479 3.82649 13.8479C5.03479 13.8479 6.14471 13.4499 7.03027 12.7764C5.89675 12.7535 4.94427 12.0302 4.61759 11.0354C5.01511 11.0927 5.37328 11.0927 5.78261 10.9894C4.60185 10.756 3.71628 9.74581 3.71628 8.52515V8.49453C4.0587 8.68203 4.46016 8.79683 4.8813 8.81214C4.52724 8.58317 4.23699 8.27255 4.03645 7.90799C3.83591 7.54343 3.73133 7.13627 3.73202 6.72285C3.73202 6.25601 3.85797 5.82744 4.08232 5.45627C5.3536 6.97923 7.26249 7.97413 9.4036 8.08127C9.03756 6.37846 10.3482 4.99709 11.9225 4.99709C12.6664 4.99709 13.3355 5.29938 13.8078 5.78918C14.3903 5.68203 14.9492 5.47158 15.4451 5.18459C15.2523 5.76622 14.8469 6.25601 14.3116 6.56596C14.8311 6.51239 15.3349 6.37081 15.7994 6.17566C15.4491 6.67693 15.0083 7.12081 14.5045 7.47668Z" fill="#151515" />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_1_158">
+                      <rect width="17.6327" height="19.5918" fill="white" transform="translate(0.685669 0.175537)" />
+                    </clipPath>
+                  </defs></svg
+              ></a>
+            </div>
+            <!-- -----INSTAGRAM--- -->
+            <div class="transform transition-transform duration-200 hover:scale-110">
+              <a href="#"
+                ><svg width="24" height="23" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M11.9714 8.25989C10.3705 8.25989 9.06398 9.56638 9.06398 11.1673C9.06398 12.7683 10.3705 14.0748 11.9714 14.0748C13.5724 14.0748 14.8789 12.7683 14.8789 11.1673C14.8789 9.56638 13.5724 8.25989 11.9714 8.25989ZM20.6915 11.1673C20.6915 9.96335 20.7025 8.77027 20.6348 7.56847C20.5672 6.17256 20.2488 4.93368 19.228 3.91291C18.2051 2.88997 16.9684 2.5737 15.5725 2.50609C14.3685 2.43847 13.1754 2.44938 11.9736 2.44938C10.7696 2.44938 9.57655 2.43847 8.37475 2.50609C6.97883 2.5737 5.73995 2.89215 4.71919 3.91291C3.69624 4.93586 3.37998 6.17256 3.31236 7.56847C3.24475 8.77245 3.25565 9.96553 3.25565 11.1673C3.25565 12.3691 3.24475 13.5644 3.31236 14.7662C3.37998 16.1621 3.69842 17.401 4.71919 18.4217C5.74213 19.4447 6.97883 19.761 8.37475 19.8286C9.57873 19.8962 10.7718 19.8853 11.9736 19.8853C13.1776 19.8853 14.3707 19.8962 15.5725 19.8286C16.9684 19.761 18.2072 19.4425 19.228 18.4217C20.251 17.3988 20.5672 16.1621 20.6348 14.7662C20.7046 13.5644 20.6915 12.3713 20.6915 11.1673ZM11.9714 15.6408C9.49584 15.6408 7.49794 13.6429 7.49794 11.1673C7.49794 8.69175 9.49584 6.69384 11.9714 6.69384C14.447 6.69384 16.4449 8.69175 16.4449 11.1673C16.4449 13.6429 14.447 15.6408 11.9714 15.6408ZM16.6281 7.55539C16.0501 7.55539 15.5834 7.08863 15.5834 6.51063C15.5834 5.93263 16.0501 5.46587 16.6281 5.46587C17.2061 5.46587 17.6729 5.93263 17.6729 6.51063C17.673 6.64788 17.6461 6.78381 17.5937 6.91065C17.5413 7.03748 17.4643 7.15272 17.3673 7.24977C17.2702 7.34682 17.155 7.42377 17.0281 7.47621C16.9013 7.52865 16.7654 7.55556 16.6281 7.55539Z" fill="#151515" /></svg
+              ></a>
+            </div>
+            <!-- ----YOUTUBE---- -->
+            <div class="transform transition-transform duration-200 hover:scale-110">
+              <a href="#"
+                ><svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g clip-path="url(#clip0_1_162)">
+                    <path d="M10.8123 3.12695C0.799741 3.12695 0.624512 4.01736 0.624512 10.9715C0.624512 17.9257 0.799741 18.8161 10.8123 18.8161C20.8248 18.8161 21 17.9257 21 10.9715C21 4.01736 20.8248 3.12695 10.8123 3.12695ZM14.0774 11.3118L9.50314 13.4472C9.10276 13.6326 8.77472 13.4247 8.77472 12.9826V8.96046C8.77472 8.51933 9.10276 8.31048 9.50314 8.4959L14.0774 10.6313C14.4778 10.8187 14.4778 11.1243 14.0774 11.3118Z" fill="#151515" />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_1_162">
+                      <rect width="20.3755" height="20.3755" fill="white" transform="translate(0.624512 0.783691)" />
+                    </clipPath>
+                  </defs></svg
+              ></a>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      </div>
+
+      <!-- HERO IMAGE (Placeholder untuk bagian kanan) -->
+      <div class="md:w-1/2">
+        <img
+          src="img/Rectangle 3.png"
+          alt="Hero Image"
+          class="relative h-1/2 w-full object-cover"
+        />
+      </div>
+      <!-- ---CARD KECIL--- -->
+      <div
+        class=" box-custom absolute top-1/3  right-52 mx-auto hidden sm:!flex max-w-2xs items-center space-x-2 rounded-xl bg-white p-3 shadow-md"
+      >
+        <!-- Gambar profil -->
+        <img
+          src="https://storage.googleapis.com/ekrutassets/blogs/images/000/003/014/original/kisah-pengusaha-sukses-EKRUT.jpg"
+          alt="Jeans Wanita"
+          class="h-17 w-17 rounded-full object-cover"
+        />
+
+        <!-- Konten teks dan bintang -->
+        <div class="flex-1">
+          <div class="mb-1 text-sm text-yellow-400">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <h2 class="text-lg font-semibold">
+            Jika ingin sukses belajarlah bersabar
+          </h2>
+          <h3 class="text-sm text-gray-600">CEO Marian Ruwet</h3>
+        </div>
+      </div>
+      <!-- ---CARD KECIL-2-- -->
+
+      <p
+        class="quote-box hidden sm:!flex poppins-semibold-italic absolute left-1/2 bottom-1/5 h-22 w-48 rounded-md bg-white p-3 text-xs shadow-md"
+      >
+        “ Belajar Itu Menyenangkan kuncinya jangan pernah menyerah oleh apapun
+        itu ”
+      </p>
+    </section>
+
+    <!-- ===========TENTANG KAMI======== -->
+    <div class="mx-auto mb-8 max-w-4xl p-5">
+      <div class="text-center">
+        <p class="font-primary text-xl font-bold">
+          Kenapa Harus <span class="text-primary">SMK Negeri</span> <br />
+          Makassar?
+        </p>
+        <p class="text-lg font-medium text-[#575757]">Alasan kenapa harus memilih untuk bergabung dengan SMK Negeri Makassar.</p>
+      </div>
+    </div>
+    <!-- ===CARD==== -->
+    <div class="mx-auto max-w-4xl pb-20">
+      <div class="mx-5 grid grid-cols-1 gap-6 md:mx-auto md:grid-cols-2 lg:grid-cols-4">
+        <div class="w-full justify-items-center rounded-md border border-gray-200 bg-white p-3 drop-shadow-xl">
+          <div class="mb-8 pt-9">
+            <img src="img/computer 1.png" alt="compt" class="w-20">
+          </div>
+          <div class="mb-10 text-center leading-loose">
+            <p class="mb-3 font-secondary text-xl font-semibold">Fasilitas Lengkap</p>
+            <h3 class="font-secondary text-base font-light text-[#838383]">Penunjang belajar dengan kualitas terbaik</h3>
+          </div>
+        </div>
+        <div class="w-full justify-items-center rounded-md border border-gray-200 bg-white p-3 drop-shadow-xl">
+          <div class="mb-8 pt-9">
+            <img src="img/bank 1.png" alt="compt" class="w-20">
+          </div>
+          <div class="mb-10 text-center ">
+            <p class="mb-3 font-secondary text-lg font-semibold">Lingkungan Nyaman</p>
+            <h3 class="font-secondary text-base font-light text-[#838383]">Penunjang belajar dengan kualitas terbaik</h3>
+          </div>
+        </div>
+        <div class="w-full justify-items-center rounded-md border border-gray-200 bg-white p-3 drop-shadow-xl">
+          <div class="mb-8 pt-9">
+            <img src="img/team 1.png" alt="compt" class="w-20">
+          </div>
+          <div class="mb-10 text-center leading-loose">
+            <p class="mb-3 font-secondary text-xl font-semibold">Kerja Sama Luas</p>
+        -    <h3 class="font-secondary text-base font-light text-[#838383]">Penunjang belajar dengan kualitas terbaik</h3>
+          </div>
+        </div>
+        <div class="w-full justify-items-center rounded-md border border-gray-200 bg-white p-3 drop-shadow-xl">
+          <div class="mb-8 pt-9">
+            <img src="img/team (1) 1.png" alt="compt" class="w-20">
+          </div>
+          <div class="mb-10 text-center leading-loose">
+            <p class="mb-3 font-secondary text-lg font-semibold">Pengajar Kompeten</p>
+            <h3 class="font-secondary text-base font-light text-[#838383]">Penunjang belajar dengan kualitas terbaik</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- ===========TENTANG KAMI======== -->
+
+    <!-- ====PROFIL====== -->
+<h1 class="mt-10 mb-9 text-center font-primary text-4xl font-bold">
+  Profil <span class="text-primary">SMK Negeri</span> <br />
+  Makassar
+</h1>
+<!-- 2 kolom-- -->
+<div class="mx-auto flex max-w-5xl flex-col items-center justify-center gap-8 px-4 py-10 md:flex-row">
+  <!-- LEFT CONTENT -->
+  <div class="w-full md:w-1/2">
+    <img src="img/bos.png" alt="kepsek" class="h-auto w-full rounded-xl object-cover shadow-md" />
+  </div>
+
+  <!--RIGHT CONTENT -->
+  <div class="w-full md:w-1/2 text-center md:!text-left">
+
+    <p class="pb-6 font-primary text-2xl font-bold sm:text-3xl">Sambutan Kepala Sekolah SMK Negeri Makassar</p>
+    <h3 class="mb-2 font-primary text-base leading-relaxed font-medium text-[#747474] sm:text-lg">
+      Sekolah adalah tempat mencetak penerus bangsa yang berkualitas dan berprestasi di segala bidang yang dapat bersaing di dunia internasional.
+    </h3>
+    <h3 class="mb-6 font-primary text-base font-medium text-[#747474] sm:text-lg">
+      Sekolah juga tempat anak-anak mendapatkan dukungan untuk melengkapi pembelajarannya di sekolah.
+    </h3>
+    <a href="#" class="inline-flex items-center justify-center gap-2 rounded-full bg-blue-700 px-4 py-3 text-xs font-semibold text-white drop-shadow-blue-800 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+      Baca Selanjutnya
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M9 6L15 12L9 18" stroke="#F2F2F2" stroke-width="2" />
+      </svg>
+    </a>
+  </div>
+  
+</div>
+<!-- ====PROFIL====== -->
+
+
+ 
+
+
+  <!-- -----JURUSAN--- -->
+<div class="mt-20 text-center">
+  <h2 class="font-primary text-4xl font-bold">
+    Jurusan Di <span class="text-primary">SMK Negeri</span> <br />
+    Makassar
+  </h2>
+  <h3 class="mb-15 font-primary text-lg font-medium text-[#949494]">Pilihan program keahlian di SMK Negeri Makassar.</h3>
+</div>
+<!-- GRID JURUSAN-- -->
+<div class="max-w-6xl px-2 lg:px-4 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:!grid-cols-5 gap-4 mx-3 md:!mx-auto mb-20">
+  <!-- Card -->
+  <div class="bg-gradient-to-r from-blue-600 to-blue-700 rounded-md px-4 py-5">
+    <div class="w-10 h-10 bg-white flex justify-center items-center rounded-md mb-4 overflow-hidden">
+      <img src="img/computer (1) 1.png" alt="" class="w-[70%]">
+    </div>
+    <a href="#" class="block font-bold text-white hover:text-blue-200 text-lg mb-2">TEKNIK Komputer Dan Jaringan</a>
+    <a href="#" class="font-medium text-sm text-slate-200">Details</a>
+  </div>
+  <div class="bg-gradient-to-r from-blue-600 to-blue-700 rounded-md px-4 py-5">
+    <div class="w-10 h-10 bg-white flex justify-center items-center rounded-md mb-4 overflow-hidden">
+      <img src="img/bank 2.png" alt="" class="w-[70%]">
+    </div>
+    <a href="#" class="block font-bold text-white hover:text-blue-200 text-lg mb-2">Perhotelan</a>
+    <a href="#" class="font-medium text-sm text-slate-200">Details</a>
+  </div>
+  <div class="bg-gradient-to-r from-blue-600 to-blue-700 rounded-md px-4 py-5">
+    <div class="w-10 h-10 bg-white flex justify-center items-center rounded-md mb-4 overflow-hidden">
+      <img src="img/coding 1.png" alt="" class="w-[70%]">
+    </div>
+    <a href="#" class="block font-bold text-white hover:text-blue-200 text-lg mb-2">Rekayasa perangkat lunak</a>
+    <a href="#" class="font-medium text-sm text-slate-200">Details</a>
+  </div>
+  <div class="bg-gradient-to-r from-blue-600 to-blue-700 rounded-md px-4 py-5">
+    <div class="w-10 h-10 bg-white flex justify-center items-center rounded-md mb-4 overflow-hidden">
+      <img src="img/interior_architectural_design_house_icon-icons 1.png" alt="" class="w-[70%]">
+    </div>
+    <a href="#" class="block font-bold text-white hover:text-blue-200 text-lg mb-2">Arsitektur</a>
+    <a href="#" class="font-medium text-sm text-slate-200">Details</a>
+  </div>
+  <div class="bg-gradient-to-r from-blue-600 to-blue-700 rounded-md px-4 py-5">
+    <div class="w-10 h-10 bg-white flex justify-center items-center rounded-md mb-4 overflow-hidden">
+      <img src="img/computer (1) 1.png" alt="" class="w-[70%]">
+    </div>
+    <a href="#" class="block font-bold text-white hover:text-blue-200 text-lg mb-2">Teknik 
+      Elektronika Industri</a>
+    <a href="#" class="font-medium text-sm text-slate-200">Details</a>
+  </div>
+  <div class="bg-gradient-to-r from-blue-600 to-blue-700 rounded-md px-4 py-5">
+    <div class="w-10 h-10 bg-white flex justify-center items-center rounded-md mb-4 overflow-hidden">
+      <img src="img/soundtrack 1.png" alt="" class="w-[70%]">
+    </div>
+    <a href="#" class="block font-bold text-white hover:text-blue-200 text-lg mb-2">Teknik
+      Audio Video</a>
+    <a href="#" class="font-medium text-sm text-slate-200">Details</a>
+  </div>
+  <div class="bg-gradient-to-r from-blue-600 to-blue-700 rounded-md px-4 py-5">
+    <div class="w-10 h-10 bg-white flex justify-center items-center rounded-md mb-4 overflow-hidden">
+      <img src="img/thunder 1.png" alt="" class="w-[70%]">
+    </div>
+    <a href="#" class="block font-bold text-white hover:text-blue-200 text-lg mb-2">Teknik Instalasi Tenaga Listrik</a>
+    <a href="#" class="font-medium text-sm text-slate-200">Details</a>
+  </div>
+  <div class="bg-gradient-to-r from-blue-600 to-blue-700 rounded-md px-4 py-5">
+    <div class="w-10 h-10 bg-white flex justify-center items-center rounded-md mb-4 overflow-hidden">
+      <img src="img/car-engine 1.png" alt="" class="w-[70%]">
+    </div>
+    <a href="#" class="block font-bold text-white hover:text-blue-200 text-lg mb-2">Kendaraan Ringan Otomotif</a>
+    <a href="#" class="font-medium text-sm text-slate-200">Details</a>
+  </div>
+  <div class="bg-gradient-to-r from-blue-600 to-blue-700 rounded-md px-4 py-5">
+    <div class="w-10 h-10 bg-white flex justify-center items-center rounded-md mb-4 overflow-hidden">
+      <img src="img/kisspng-welding-welder-computer-icons-5afe1377911609 1.png" alt="" class="w-[70%]">
+    </div>
+    <a href="#" class="block font-bold text-white hover:text-blue-200 text-lg mb-2">Pemodelan dan Informasi Bangunan</a>
+    <a href="#" class="font-medium text-sm text-slate-200">Details</a>
+  </div>
+  <div class="bg-gradient-to-r from-blue-600 to-blue-700 rounded-md px-4 py-5">
+    <div class="w-10 h-10 bg-white flex justify-center items-center rounded-md mb-4 overflow-hidden">
+      <img src="img/computer (1) 1.png" alt="" class="w-[70%]">
+    </div>
+    <a href="#" class="block font-bold text-white hover:text-blue-200 text-lg mb-2">Teknik Pengelasan</a>
+    <a href="#" class="font-medium text-sm text-slate-200">Details</a>
+  </div>
+  <!-- Tambahkan card lain di sini -->
+</div>
+
+  
+
+
+
+
+<!-- ======EKSKUL======= -->
+<div class="mb-10 w-full bg-[#F0EFFF] p-11 py-20">
+  <div class="mb-10 text-center leading-tight">
+    <h2 class="font-primary font-bold text-4xl mb-5 leading-snug">
+      Ekstrakulikuler Di <span class="text-primary">SMK <br />
+        Negeri</span> Makassar
+    </h2>
+    <h3 class="font-primary font-medium text-lg text-[#949494]">Pilihan Ekstrakulikuler di SMK Negeri Makassar.</h3>
+  </div>
+  <!-- ==CARD== -->
+  <div class="mx-auto mb-10 grid max-w-4xl grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4 ">
+    <div class="h-fit w-full rounded-xl bg-white p-5 drop-shadow-2xl">
+      <div class="mb-8  w-full bg-white p-1">
+        <img src="img/pramuka-logohd-38028 1.png" alt="pramuka" class="w-12 h-12 mb-4">
+        <p class="mb-5 font-primary text-lg font-bold text-[#2E2E2E]">Praja Muda Karana</p>
+        <p class=" pb-4 font-primary font-medium text-[#999999] text-base">Pertama kali dibentuk team tahun 2002</p>
+        <a href="#" class="text-sm text-[#DBDBDB]">Details</a>
+      </div>
+    </div>
+    <div class="h-full rounded-xl bg-white p-5 drop-shadow-2xl">
+      <div class="mb-8 w-fit bg-white p-1">
+        <img src="img/Pmi 1.png" alt="pmi" class="w-12 h-12 mb-4">
+        <p class="mb-5 font-primary text-lg font-bold text-[#2E2E2E]">Praja Muda Karana</p>
+        <p class="pb-4 font-primary text-base font-medium text-[#999999]">Pertama kali dibentuk team tahun 2002</p>
+        <a href="#" class="text-sm text-[#DBDBDB]">Details</a>
+      </div>
+    </div>
+    <div class="h-full rounded-xl bg-white p-5 drop-shadow-2xl">
+      <div class="mb-8 w-fit bg-white p-1">
+        <img src="img/camping-edt-crp.png" alt="camping" class="w-12 h-12 mb-4">
+        <p class="mb-5 font-primary text-lg font-bold text-[#2E2E2E]">Praja Muda Karana</p>
+        <p class="  pb-4 font-primary  text-base font-medium text-[#999999]">Pertama kali dibentuk team tahun 2002</p>
+        <a href="#" class="text-sm text-[#DBDBDB]">Details</a>
+      </div>
+    </div>
+    <div class="h-full rounded-xl bg-white p-5 drop-shadow-2xl">
+      <div class="mb-8 w-fit bg-white p-1">
+        <img src="img/kisspng-cinematography-film-cinematography-5b35aa2fac5b04 1.png" alt="cine" class="w-12 h-12 mb-4">
+        <p class="mb-5 font-primary text-lg font-bold text-[#2E2E2E]">Praja Muda Karana</p>
+        <p class="pb-4 font-primary text-base font-medium text-[#999999]">Pertama kali dibentuk team tahun 2002</p>
+        <a href="#" class="text-sm text-[#DBDBDB]">Details</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ---BERITA TERBARU-- -->
+
+<div class="mt-20 text-center">
+  <h2 class="font-primary text-4xl font-bold">
+    Berita Terbaru Di <span class="text-primary">SMK Negeri</span> <br />
+    Makassar
+  </h2>
+  <h3 class="mb-15 font-primary text-lg font-medium text-[#949494]">Berita Terbaru Tentang SMK Negeri Makassar.</h3>
+</div>
+
+<div class="m-4  grid max-w-6xl grid-cols-1 grid-rows-4 gap-5 mx-8 lg:!mx-auto md:grid-cols-3 md:grid-rows-2 md:gap-5 lg:grid-cols-4 ">
+  <!-- Card 1 -->
+  <div class="h-full rounded-lg border border-gray-200 bg-white shadow-sm transition-shadow hover:shadow-md">
+    <a href="#">
+      <img class="h-48 w-full rounded-t-lg object-cover" src="img/Rectangle 48.png" alt="News image" />
+    </a>
+    <div class="p-4">
+      <h3 class="pb-2 text-xs font-medium text-gray-500">13 December 2023</h3>
+      <h2 class="line-clamp-2 pb-2 text-base font-bold">Pendaftaran SMK Negeri Makassar Telah Dibuka!</h2>
+      <h4 class="pb-3 text-xs font-light text-gray-500">By Admin SmkNs</h4>
+      <a href="#" class="text-xs font-semibold text-blue-600 hover:text-blue-800">Baca Selengkapnya</a>
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="h-full rounded-lg border border-gray-200 bg-white shadow-sm transition-shadow hover:shadow-md">
+    <a href="#">
+      <img class="h-48 w-full rounded-t-lg object-cover" src="img/Rectangle 51.png" alt="News image" />
+    </a>
+    <div class="p-4">
+      <h3 class="pb-2 text-xs font-medium text-gray-500">13 December 2023</h3>
+      <h2 class="line-clamp-2 pb-2 text-base font-bold">Pendaftaran SMK Negeri Makassar Telah Dibuka!</h2>
+      <h4 class="pb-3 text-xs font-light text-gray-500">By Admin SmkNs</h4>
+      <a href="#" class="text-xs font-semibold text-blue-600 hover:text-blue-800">Baca Selengkapnya</a>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="h-full rounded-lg border border-gray-200 bg-white shadow-sm transition-shadow hover:shadow-md">
+    <a href="#">
+      <img class="h-48 w-full rounded-t-lg object-cover" src="img/Rectangle 52.png" alt="News image" />
+    </a>
+    <div class="p-4">
+      <h3 class="pb-2 text-xs font-medium text-gray-500">13 December 2023</h3>
+      <h2 class="line-clamp-2 pb-2 text-base font-bold">Pendaftaran SMK Negeri Makassar Telah Dibuka!</h2>
+      <h4 class="pb-3 text-xs font-light text-gray-500">By Admin SmkNs</h4>
+      <a href="#" class="text-xs font-semibold text-blue-600 hover:text-blue-800">Baca Selengkapnya</a>
+    </div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="h-full rounded-lg border border-gray-200 bg-white shadow-sm transition-shadow hover:shadow-md">
+    <a href="#">
+      <img class="h-48 w-full rounded-t-lg object-cover" src="img/Rectangle 53.png" alt="News image" />
+    </a>
+    <div class="p-4">
+      <h3 class="pb-2 text-xs font-medium text-gray-500">13 December 2023</h3>
+      <h2 class="line-clamp-2 pb-2 text-base font-bold">Pendaftaran SMK Negeri Makassar Telah Dibuka!</h2>
+      <h4 class="pb-3 text-xs font-light text-gray-500">By Admin SmkNs</h4>
+      <a href="#" class="text-xs font-semibold text-blue-600 hover:text-blue-800">Baca Selengkapnya</a>
+    </div>
+  </div>
+  <div class="h-full rounded-lg border border-gray-200 bg-white shadow-sm transition-shadow hover:shadow-md">
+    <a href="#">
+      <img class="h-48 w-full rounded-t-lg object-cover" src="img/Rectangle 55.png" alt="News image" />
+    </a>
+    <div class="p-4">
+      <h3 class="pb-2 text-xs font-medium text-gray-500">13 December 2023</h3>
+      <h2 class="line-clamp-2 pb-2 text-base font-bold">Pendaftaran SMK Negeri Makassar Telah Dibuka!</h2>
+      <h4 class="pb-3 text-xs font-light text-gray-500">By Admin SmkNs</h4>
+      <a href="#" class="text-xs font-semibold text-blue-600 hover:text-blue-800">Baca Selengkapnya</a>
+    </div>
+  </div>
+  <div class="h-full rounded-lg border border-gray-200 bg-white shadow-sm transition-shadow hover:shadow-md">
+    <a href="#">
+      <img class="h-48 w-full rounded-t-lg object-cover" src="img/Rectangle 59.png" alt="News image" />
+    </a>
+    <div class="p-4">
+      <h3 class="pb-2 text-xs font-medium text-gray-500">13 December 2023</h3>
+      <h2 class="line-clamp-2 pb-2 text-base font-bold">Pendaftaran SMK Negeri Makassar Telah Dibuka!</h2>
+      <h4 class="pb-3 text-xs font-light text-gray-500">By Admin SmkNs</h4>
+      <a href="#" class="text-xs font-semibold text-blue-600 hover:text-blue-800">Baca Selengkapnya</a>
+    </div>
+  </div>
+  <div class="h-full rounded-lg border border-gray-200 bg-white shadow-sm transition-shadow hover:shadow-md">
+    <a href="#">
+      <img class="h-48 w-full rounded-t-lg object-cover" src="img/Rectangle 60.png" alt="News image" />
+    </a>
+    <div class="p-4">
+      <h3 class="pb-2 text-xs font-medium text-gray-500">13 December 2023</h3>
+      <h2 class="line-clamp-2 pb-2 text-base font-bold">Pendaftaran SMK Negeri Makassar Telah Dibuka!</h2>
+      <h4 class="pb-3 text-xs font-light text-gray-500">By Admin SmkNs</h4>
+      <a href="#" class="text-xs font-semibold text-blue-600 hover:text-blue-800">Baca Selengkapnya</a>
+    </div>
+  </div>
+  <div class="h-full rounded-lg border border-gray-200 bg-white shadow-sm transition-shadow hover:shadow-md">
+    <a href="#">
+      <img class="h-48 w-full rounded-t-lg object-cover" src="img/Rectangle 61.png" alt="News image" />
+    </a>
+    <div class="p-4">
+      <h3 class="pb-2 text-xs font-medium text-gray-500">13 December 2023</h3>
+      <h2 class="line-clamp-2 pb-2 text-base font-bold">Pendaftaran SMK Negeri Makassar Telah Dibuka!</h2>
+      <h4 class="pb-3 text-xs font-light text-gray-500">By Admin SmkNs</h4>
+      <a href="#" class="text-xs font-semibold text-blue-600 hover:text-blue-800">Baca Selengkapnya</a>
+    </div>
+  </div>
+</div>
+<!-- ---BUTTON-- -->
+<div class="mx-auto mt-16 text-center mb-15">
+  <a href="#" class="inline-flex items-center justify-center gap-2 rounded-full bg-blue-700 px-10 py-3 text-xs font-semibold text-white drop-shadow-blue-800 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"> Semua Berita </a>
+</div>
+<!-- ---BERITA TERBARU-- -->
+
+<!-- ---FOTO DOKUMENTASI-- -->
+<div class="w-full bg-primary p-6 pb-28 sm:p-10">
+  <div class="mx-auto max-w-3xl">
+    <h1 class="mb-10 text-center font-primary text-3xl leading-relaxed font-bold text-white sm:text-4xl">
+      Foto Dokumentasi Kegiatan <br />
+      SMK Negeri Makassar
+    </h1>
+    <div class="grid grid-cols-1 gap-6 pb-28 md:grid-cols-3">
+      <!-- ==CARD 1 -->
+      <div class="group relative mt-5 h-full overflow-hidden rounded-lg border border-gray-200 bg-white shadow-lg">
+  <img class="h-64 w-full object-cover sm:h-72" src="img/Rectangle 66 (1).png" alt="Card Image" />
+  
+  <!-- Overlay hover -->
+  <div class="absolute inset-x-0 bottom-0 h-0 w-full bg-white/30 p-0 transition-all duration-300 group-hover:h-1/2 backdrop-blur-xs sm:p-7 overflow-hidden">
+    <div class="relative h-full w-full p-4 pt-6 text-center sm:p-7">
+
+      <!-- Garis Atas -->
+      <div class="mb-4 flex flex-col items-center space-y-1">
+        <!-- Garis panjang -->
+        <div class="h-[2px] w-20 bg-[#262626] opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+        <!-- Garis pendek -->
+        <div class="h-[2px] w-10 bg-[#262626] opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+      </div>
+
+      <p class="font-primary text-xl font-bold text-[#262626]">Meja Karya Salah <br />satu Siswa</p>
+      <p class="text-sm font-medium text-[#202020]">SMK Negeri <br />Makassar</p>
+    </div>
+  </div>
+      </div>
+
+
+      <!-- ==CARD 2 -->
+      <div class="relative mt-5 h-full overflow-hidden rounded-lg border border-gray-200 bg-white shadow-lg">
+        <img class="h-64 w-full object-cover sm:h-72" src="img/Rectangle 76.png" alt="Card Image" />
+        <div class="absolute inset-x-0 bottom-0 bg-white/60 p-4">
+          <p class="font-primary text-xl font-bold text-[#262626]">Reuni Akbar Ang <br />23</p>
+          <p class="text-sm font-medium text-[#202020]">Aula SMK Negeri <br>Makassar</p>
+        </div>
+      </div>
+
+      <!-- ==CARD 3 -->
+      <div class="relative mt-5 h-full overflow-hidden rounded-lg border border-gray-200 bg-white shadow-lg">
+        <img class="h-64 w-full object-cover sm:h-72" src="img/Rectangle 74.png" alt="Card Image" />
+        <div class="absolute inset-x-0 bottom-0 bg-slate-100/40 p-4">
+          <p class="font-primary text-xl font-bold text-[#262626]">Perpustakaan <br>Baru</p>
+          <p class="text-sm font-medium text-[#202020]">Perpustakaan SMK Negeri Makassar</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ---FOTO DOKUMENTASI-- -->
+ 
+<!-- ====PROFIL==== -->
+<div class="text-center py-28 font-primary">
+  <h1 class="font-bold text-4xl mb-5">
+    Profil Alumni <span class="text-primary">SMK  <br>Negeri </span> Makassar
+  </h1>
+  <h3 class="font-medium text-base text-[#949494]">Profil Alumni SMK Negeri  Makassar.</h3>
+</div>
+ <div class="mx-auto flex max-w-6xl flex-col justify-between gap-5 md:flex-row p-2 mb-18">
+  <!-- PROFIL 1 -->
+  <div class="flex w-full items-center md:w-1/2">
+    <div>
+      <img src="img/Rectangle 83.png" alt="img" class=" w-50 md:w-45 object-cover" />
+    </div>
+    <div class="flex flex-col p-4">
+      <h2 class="mb-1 md:mb-2.5 font-primary text-lg md:text-4xl font-bold text-[#262626]">
+        Wilyam
+        <br class="hidden md:inline" />
+        Arilsom ST
+      </h2>
+      
+      <h3 class="mb-4 font-primary text-sm font-medium text-[#202020]">Angkatan 2009</h3>
+      <p class="mb-3 font-primary  text-sm md:text-base leading-4 md:leading-5 font-medium text-[#989898]">
+        Livianti adalah seorang ui ux <br />yang berkerja di Inggris saat ini <br />
+        dia adalah salah satu alumni <br />
+        yang berprestasi.
+      </p>
+      <a href="#" class="font-primary text-sm font-semibold text-primary">Baca Selengkapnya..</a>
+    </div>
+  </div>
+  <div class="flex w-full items-center md:w-1/2">
+    <div>
+      <img src="img/Rectangle 85.png" alt="img" class=" w-50 md:w-45 object-cover" />
+    </div>
+    <div class="flex flex-col p-4">
+      <h2 class="mb-1 md:mb-2.5 font-primary text-lg md:text-4xl font-bold text-[#262626]">
+        Windi 
+        <br class="hidden md:inline" />
+        alextria ayu
+      </h2>
+      
+      <h3 class="mb-4 font-primary text-sm font-medium text-[#202020]">Angkatan 2009</h3>
+      <p class="mb-3 font-primary  text-sm md:text-base leading-4 md:leading-5 font-medium text-[#989898]">
+        Livianti adalah seorang ui ux <br />yang berkerja di Inggris saat ini <br />
+        dia adalah salah satu alumni <br />
+        yang berprestasi.
+      </p>
+      <a href="#" class="font-primary text-sm font-semibold text-primary">Baca Selengkapnya..</a>
+    </div>
+  </div>
+  
+</div>
+
+ <!-- ====PROFIL==== -->
+  
+ 
+ 
+
+
+
+<!-- ==FOOTER== -->
+
+<div class="w-full bg-primary p-10 py-10 md:py-20 ">
+  <div class="mx-auto flex max-w-5xl flex-col items-center gap-8 px-4 md:flex-row md:items-start md:justify-between md:gap-5">
+    <!-- LEFT CONTENT -->
+    <div class="w-full text-center md:w-1/2 md:!text-left">
+      <h2 class="mb-3 font-secondary text-3xl font-black text-white md:text-4xl">SMKNS</h2>
+      <h3 class="font-primary text-sm font-medium text-[#E1E1E1]">sekolah adalah tempat mencetak penerus bangsa <br class="hidden md:block" />yang berkualitas dan berprestasi di segala bidang <br class="hidden md:block" />yang dapat bersaing di dunia internasional</h3>
+    </div>
+    <!-- RIGHT CONTENT -->
+    <div class="w-full md:w-1/2">
+      <div class="mb-4 flex items-center justify-center gap-3 md:!justify-end">
+        <svg width="29" height="30" viewBox="0 0 29 30" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 md:h-auto md:w-auto">
+          <g clip-path="url(#clip0_1_237)">
+            <path d="M5.28777 0.714355C2.35858 0.714355 0 3.07294 0 6.00213V24.3858C0 27.315 2.35858 29.6736 5.28777 29.6736H15.2516V18.3523H12.2579V14.2763H15.2516V10.794C15.2516 8.05806 17.0204 5.54602 21.095 5.54602C22.7447 5.54602 23.9646 5.7044 23.9646 5.7044L23.8687 9.51074C23.8687 9.51074 22.6245 9.49898 21.2669 9.49898C19.7975 9.49898 19.5619 10.176 19.5619 11.2999V14.2763H23.9854L23.7927 18.3524H19.5619V29.6736H23.6714C26.6006 29.6736 28.9592 27.315 28.9592 24.3858V6.00216C28.9592 3.07297 26.6006 0.714384 23.6714 0.714384L5.28777 0.714355Z" fill="white" />
+          </g>
+          <defs>
+            <clipPath id="clip0_1_237">
+              <rect width="28.9592" height="28.9592" fill="white" transform="translate(0 0.714355)" />
+            </clipPath>
+          </defs>
+        </svg>
+        <svg width="31" height="34" viewBox="0 0 31 34" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 md:h-auto md:w-auto">
+          <g clip-path="url(#clip0_1_239)">
+            <path d="M27.4876 2.125H3.67564C1.88298 2.125 0.428558 3.53902 0.428558 5.28189V28.4324C0.428558 30.1753 1.88298 31.5893 3.67564 31.5893H27.4876C29.2803 31.5893 30.7347 30.1753 30.7347 28.4324V5.28189C30.7347 3.53902 29.2803 2.125 27.4876 2.125ZM24.1796 12.569C24.1932 12.7532 24.1932 12.9439 24.1932 13.1281C24.1932 18.8302 19.7284 25.4005 11.5701 25.4005C9.05363 25.4005 6.71978 24.6902 4.758 23.4669C5.11654 23.5063 5.46154 23.5195 5.82684 23.5195C7.90362 23.5195 9.81128 22.8355 11.3334 21.678C9.3851 21.6385 7.74803 20.3955 7.18655 18.6855C7.86979 18.7842 8.48539 18.7842 9.18892 18.6066C7.15949 18.2054 5.63742 16.4691 5.63742 14.3711V14.3185C6.22596 14.6407 6.91596 14.838 7.63979 14.8644C7.03125 14.4708 6.53239 13.9369 6.18772 13.3103C5.84304 12.6838 5.66329 11.984 5.66448 11.2734C5.66448 10.471 5.88095 9.73442 6.26655 9.09646C8.45156 11.714 11.7325 13.424 15.4125 13.6082C14.7834 10.6815 17.036 8.30724 19.7419 8.30724C21.0205 8.30724 22.1705 8.82681 22.9823 9.66865C23.9834 9.48449 24.944 9.12277 25.7964 8.6295C25.4649 9.62918 24.7682 10.471 23.8482 11.0037C24.7411 10.9117 25.607 10.6683 26.4052 10.3329C25.8032 11.1945 25.0455 11.9574 24.1796 12.569Z" fill="white" />
+          </g>
+          <defs>
+            <clipPath id="clip0_1_239">
+              <rect width="30.3061" height="33.6735" fill="white" transform="translate(0.428558 0.0205078)" />
+            </clipPath>
+          </defs>
+        </svg>
+        <svg width="39" height="39" viewBox="0 0 39 39" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 md:h-auto md:w-auto">
+          <path d="M19.3572 14.1967C16.6055 14.1967 14.36 16.4422 14.36 19.1938C14.36 21.9454 16.6055 24.191 19.3572 24.191C22.1088 24.191 24.3543 21.9454 24.3543 19.1938C24.3543 16.4422 22.1088 14.1967 19.3572 14.1967ZM34.3449 19.1938C34.3449 17.1245 34.3636 15.0739 34.2474 13.0083C34.1312 10.6091 33.5839 8.47974 31.8294 6.7253C30.0712 4.96711 27.9457 4.42354 25.5464 4.30732C23.4771 4.19111 21.4265 4.20986 19.3609 4.20986C17.2916 4.20986 15.241 4.19111 13.1754 4.30732C10.7761 4.42354 8.64683 4.97086 6.89239 6.7253C5.1342 8.48349 4.59062 10.6091 4.47441 13.0083C4.35819 15.0776 4.37694 17.1282 4.37694 19.1938C4.37694 21.2594 4.35819 23.3138 4.47441 25.3794C4.59062 27.7786 5.13795 29.9079 6.89239 31.6624C8.65058 33.4205 10.7761 33.9641 13.1754 34.0803C15.2447 34.1965 17.2953 34.1778 19.3609 34.1778C21.4302 34.1778 23.4808 34.1965 25.5464 34.0803C27.9457 33.9641 30.075 33.4168 31.8294 31.6624C33.5876 29.9042 34.1312 27.7786 34.2474 25.3794C34.3674 23.3138 34.3449 21.2632 34.3449 19.1938ZM19.3572 26.8826C15.1023 26.8826 11.6684 23.4487 11.6684 19.1938C11.6684 14.9389 15.1023 11.505 19.3572 11.505C23.6121 11.505 27.046 14.9389 27.046 19.1938C27.046 23.4487 23.6121 26.8826 19.3572 26.8826ZM27.3609 12.9858C26.3674 12.9858 25.5652 12.1836 25.5652 11.1901C25.5652 10.1967 26.3674 9.39445 27.3609 9.39445C28.3543 9.39445 29.1565 10.1967 29.1565 11.1901C29.1568 11.426 29.1106 11.6597 29.0205 11.8777C28.9303 12.0957 28.7981 12.2937 28.6313 12.4605C28.4645 12.6273 28.2664 12.7596 28.0484 12.8497C27.8304 12.9399 27.5968 12.9861 27.3609 12.9858Z" fill="white" />
+        </svg>
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 md:h-auto md:w-auto">
+          <g clip-path="url(#clip0_1_243)">
+            <path d="M18.4898 4.37427C1.28079 4.37427 0.979614 5.90466 0.979614 17.8571C0.979614 29.8096 1.28079 31.34 18.4898 31.34C35.6988 31.34 36 29.8096 36 17.8571C36 5.90466 35.6988 4.37427 18.4898 4.37427ZM24.1018 18.442L16.2398 22.1121C15.5516 22.4308 14.9878 22.0736 14.9878 21.3136V14.4006C14.9878 13.6424 15.5516 13.2835 16.2398 13.6021L24.1018 17.2723C24.79 17.5945 24.79 18.1198 24.1018 18.442Z" fill="white" />
+          </g>
+          <defs>
+            <clipPath id="clip0_1_243">
+              <rect width="35.0204" height="35.0204" fill="white" transform="translate(0.979614 0.346924)" />
+            </clipPath>
+          </defs>
+        </svg>
+      </div>
+      <div class="text-center md:!text-right">
+        <p class="font-secondary text-base text-white md:text-lg">
+          Dibuat Oleh SukaNgodingAja,<br />
+          Menggunakan Tailwind css dan Js. @2025
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+ 
+
+  <!-- ===FOOTER ===-->
+
+
+
+    
+
+    <!-- -------SCRIPT FLOWBITE---- -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+  </body>
+</html>
